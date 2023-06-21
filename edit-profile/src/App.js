@@ -28,7 +28,7 @@ function App() {
           <Route exact path='/viewUser/:id' element={<ViewUser />} />
           <Route exact path='/about/:id' element={<About/>} /> 
           <Route exact path='/lettergenerator' element={<Lhome/>} />
-          <Route exact path='/review_letter' element={<Letter/>} />
+          <Route exact path='/lettergenerator/review_letter' element={<Letter/>} />
         </Routes>
       </Router> 
 

@@ -18,12 +18,13 @@ const Home = () => {
   const navigate=useNavigate();
 
 
-  const [company, setCompany] = "AIESEC in University of Ruhuna";
+  const [company, setCompany] = useState("AIESEC in University of Ruhuna");
   const [text,setText] =useState("");
-  const [sub,setSub] ="Endorsement for Mr.Reyanson Sosai candidate for the Core Committee of Youth 4 Youth";
+  const [sub,setSub] =useState("Endorsement for Mr.Reyanson Sosai candidate for the Core Committee of Youth 4 Youth");
   const [isName, setIsName] = "true";
-  const [username, setUsername] = "Reyanson Sosai";
-  const [address, setAddress] = "Official Expansion,University of Ruhuna";
+  const [username, setUsername] = "ReyansonSosai";
+  const [address, setAddress] = useState("Official Expansion");
+  const [address2]=useState("University of Ruhuna");
   const [refNo,setRefNo]="1021";
   const sig_name="Lahiru Damian Perera VP - PM 21/22";
   const sig_email="lahiru.perera@aiesec.net";
@@ -34,10 +35,10 @@ const Home = () => {
 
   const submitDetails=(e)=>{
       e.preventDefault();
-    if(!company.trim()||!sub.trim()||signature==="https://rusutikaa.github.io/docs/developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/defaultphoto_2x.png"  || !text.trim() || !username.trim())
+    if(!company||!sub||signature==="https://rusutikaa.github.io/docs/developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/defaultphoto_2x.png"  || !text || !username)
     alert("Subject, Company, letter body, Logo, Employee Name are required!");
     else{
-      navigate(`generateletter`,{state:{company,sub,isName,username,address,logo,signature,sig_email,sig_name,refNo,designation,joiningDate,text}});
+      navigate(`review_letter`,{state:{company,sub,isName,username,address,address2,logo,signature,sig_email,sig_name,refNo,designation,joiningDate,text}});
     }
   }
 
@@ -116,8 +117,8 @@ const Home = () => {
               <div className="form-group text-center">
                 <input type="file" className="form-control-file d-none" id="exampleFormControlFile1" onChange={(e)=>uploadImage(e)} />
               <div className="form-group">
-              <div className="text-center mb-2"><img className="rounded mt-5" src={logo}  style={{width:"35%",height:"35%", border: "5px solid blue"}} alt="" /></div>
-              <label htmlFor="exampleFormControlFile1" className='btn btn-primary mybtn'>Upload a logo</label>
+              <div className="text-center mb-2"><img className="rounded mt-5" src={signature}  style={{width:"35%",height:"35%", border: "5px solid blue"}} alt="" /></div>
+              <label htmlFor="exampleFormControlFile1" className='btn btn-primary mybtn'>Upload a Signature</label>
               </div>
               </div>
             </Box>

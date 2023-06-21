@@ -15,7 +15,12 @@ const Letter = () => {
     refNo,
     designation,
     joiningDate,
-    text
+    text,
+    signature,
+    sig_name,
+    sig_email,
+    address2
+
   } = useLocation().state;
   
 
@@ -28,11 +33,40 @@ const Letter = () => {
     today = dd + "-" + mm + "-" + yyyy;
     let pname = username.split(" ").join('-');
     let filename = pname+'-'+today
-      doc.html(document.getElementById("pdf-div"), {
+    doc.setFont("Time New Roman");
+    doc.setFontSize(12);
+    doc.addImage(logo,'PNG',20,20,120,30);
+
+    doc.text(company,25,70);
+    doc.text(address,25,90);
+    doc.text(address2,25,110);
+    doc.text(today,25,140);
+    doc.text("To whom it may concern,",25,160);
+
+    //subject
+    doc.setFontSize(20);
+    doc.text(sub,290,200,{maxWidth:'500',align:'center'})
+
+    //letter text
+    doc.setFontSize(12);
+    doc.text(`${text}`,25,260,{maxWidth:'500'});
+    //doc.html(document.getElementById("pdf-div"));
+
+    doc.html(document.getElementById("pdf-div"), {
         callback: function (pdf) {
+          pdf.addFont("Time New Roman");
+          pdf.setFont("Time New Roman");
+          pdf.setFontSize(12);
           pdf.save(`${filename}.pdf`);
         },
       });
+    
+    //doc.save(`${filename}.pdf`);
+      // doc.html(document.getElementById("pdf-div"), {
+      //   callback: function (pdf) {
+      //     pdf.save(`${filename}.pdf`);
+      //   },
+      // });
   };
 
   return (
@@ -73,9 +107,13 @@ const Letter = () => {
                 <h5>{sub}</h5> {parse(text)}
               </p>
             </div>
-            <div className="col-lg-12 col-md-12 col-sm-12 col-12 d-flex flex-column mt-4 ms-3">
-              <h6>Thanks and Regards,</h6>
-              {isName && <h6>{isName}</h6>}
+            <div className="col-lg-12 col-md-12 col-sm-12 col-12 d-flex flex-column  ms-3">
+              <h6 className="col-lg-2 col-md-2 col-sm-4 col-4 ms-3">Thanks and Regards,</h6>
+              <img
+                src={signature}
+                alt=""
+                className="col-lg-2 col-md-2 col-sm-4 col-4 ms-3"
+              />
             </div>
           </div>
           <div className="col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center align-items-center text-center">
