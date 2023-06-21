@@ -11,29 +11,33 @@ import ReactQuill from 'react-quill';
 import '../../../node_modules/react-quill/dist/quill.snow.css';
 import { QuillModules, QuillFormats } from './quill';
 import './Home.css';
+import logo from './Blue-Logo.png'
 
 const Home = () => {
 
   const navigate=useNavigate();
 
 
-  const [company, setCompany] = useState("");
+  const [company, setCompany] = "AIESEC in University of Ruhuna";
   const [text,setText] =useState("");
-  const [sub,setSub] = useState("");
-  const [isName, setIsName] = useState("");
-  const [username, setUsername] = useState("");
-  const [address, setAddress] = useState("");
-  const [refNo,setRefNo]=useState("");
-  const [designation,setDesignation]=useState("");
-  const [joiningDate,setJoiningDate]=useState("");
-  const [logo,setLogo]=useState("https://rusutikaa.github.io/docs/developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/defaultphoto_2x.png");
+  const [sub,setSub] ="Endorsement for Mr.Reyanson Sosai candidate for the Core Committee of Youth 4 Youth";
+  const [isName, setIsName] = "true";
+  const [username, setUsername] = "Reyanson Sosai";
+  const [address, setAddress] = "Official Expansion,University of Ruhuna";
+  const [refNo,setRefNo]="1021";
+  const sig_name="Lahiru Damian Perera VP - PM 21/22";
+  const sig_email="lahiru.perera@aiesec.net";
+ 
+  const [designation,setDesignation]=useState("student");
+  const [joiningDate,setJoiningDate]=useState("12/06/2022");
+  const [signature,setLogo]=useState("https://rusutikaa.github.io/docs/developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/defaultphoto_2x.png");
 
   const submitDetails=(e)=>{
       e.preventDefault();
-    if(!company.trim()||!sub.trim()||logo==="https://rusutikaa.github.io/docs/developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/defaultphoto_2x.png"  || !text.trim() || !username.trim())
+    if(!company.trim()||!sub.trim()||signature==="https://rusutikaa.github.io/docs/developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/defaultphoto_2x.png"  || !text.trim() || !username.trim())
     alert("Subject, Company, letter body, Logo, Employee Name are required!");
     else{
-      navigate(`generateletter`,{state:{company,sub,isName,username,address,logo,refNo,designation,joiningDate,text}});
+      navigate(`generateletter`,{state:{company,sub,isName,username,address,logo,signature,sig_email,sig_name,refNo,designation,joiningDate,text}});
     }
   }
 
